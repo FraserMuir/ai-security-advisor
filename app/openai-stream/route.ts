@@ -1,7 +1,5 @@
 import { streamOpenAI } from "./stream";
 
-export const runtime = "experimental-edge";
-
 export async function POST(req: Request) {
   const { prompt } = (await req.json()) as { prompt?: string };
   if (!prompt) return new Response("No prompt in the request", { status: 400 });
