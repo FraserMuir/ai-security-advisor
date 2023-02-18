@@ -1,10 +1,8 @@
-import { streamOpenAI } from "utils/streamOpenAI";
+import { streamOpenAI } from "./stream";
 
-export const config = {
-  runtime: "edge",
-};
+export const runtime = "edge";
 
-const generate = async (req: Request): Promise<Response> => {
+export async function POST(req: Request) {
   const { prompt } = (await req.json()) as { prompt?: string };
   if (!prompt) return new Response("No prompt in the request", { status: 400 });
 
@@ -15,6 +13,4 @@ const generate = async (req: Request): Promise<Response> => {
     const message = error instanceof Error ? error.message : error;
     return new Response(String(message), { status: 500 });
   }
-};
-
-export default generate;
+}
