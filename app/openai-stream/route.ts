@@ -1,6 +1,6 @@
 import { streamOpenAI } from "./stream";
 
-export const runtime = "edge";
+export const runtime = "experimental-edge";
 
 export async function POST(req: Request) {
   const { prompt } = (await req.json()) as { prompt?: string };
