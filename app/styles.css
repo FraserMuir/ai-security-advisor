@@ -75,3 +75,10 @@ button:hover {
   border: 1px solid #ccc;
   border-radius: 0.4rem;
 }
+
+.recommendation-heading {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0 0 0.5rem;
+}
+

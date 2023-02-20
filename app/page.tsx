@@ -42,7 +42,7 @@ const Home = () => {
   };
 
   const recommendations = response
-    .split(/\d\.\s*/)
+    .split(/\d+\.\s*/)
     .map((s) => s.trim())
     .filter(Boolean);
 
@@ -71,9 +71,18 @@ const Home = () => {
           ? "Loading..."
           : "Generate recommendations"}
       </button>
-      {recommendations.map((recommendation, i) => (
-        <div className="recommendation" key={i}>{recommendation}</div>
-      ))}
+      {recommendations.map((recommendation, i) => {
+        const [firstPart, secondPart] = recommendation
+          .split("--")
+          .map((s) => s.trim())
+          .filter(Boolean);
+        return (
+          <div className="recommendation" key={i}>
+            {secondPart && <div className="recommendation-heading">{firstPart}</div>}
+            <div className="recommendation-body">{secondPart || firstPart}</div>
+          </div>
+        );
+      })}
     </main>
   );
 };
