@@ -69,7 +69,7 @@ const Home = () => {
           ? "Generating..."
           : loadingState === LoadingStates.LOADING
           ? "Loading..."
-          : "Generate response"}
+          : "Generate recommendations"}
       </button>
       {recommendations.map((recommendation, i) => (
         <div className="recommendation" key={i}>{recommendation}</div>
